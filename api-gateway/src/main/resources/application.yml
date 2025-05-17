@@ -1,0 +1,30 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: country-service
+          uri: lb://country-service
+          predicates:
+            - Path=/api/countries/**
+        - id: player-service
+          uri: lb://player-service
+          predicates:
+            - Path=/api/players/**
+        - id: team-service
+          uri: lb://team-service
+          predicates:
+            - Path=/api/teams/**
+        - id: season-service
+          uri: lb://season-service
+          predicates:
+            - Path=/api/seasons/**
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

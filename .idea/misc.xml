@@ -10,6 +10,7 @@
         <option value="$PROJECT_DIR$/player-service/pom.xml" />
         <option value="$PROJECT_DIR$/team-service/pom.xml" />
         <option value="$PROJECT_DIR$/country-service/pom.xml" />
+        <option value="$PROJECT_DIR$/season-service/pom.xml" />
       </list>
     </option>
   </component>
