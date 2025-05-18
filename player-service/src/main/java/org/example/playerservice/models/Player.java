@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
+import org.example.playerservice.dto.TeamDto;
 
 import java.util.Date;
 import java.util.UUID;
@@ -36,10 +37,11 @@ public class Player {
     @Column(nullable = false)
     private String tShirtNumber;
 
-    @ManyToOne
-    @JoinColumn(name = "team_id", nullable = false)
-    @JsonBackReference
-    private Team team;
+    @Column(nullable = false)
+    private UUID teamId;
+
+    @Transient
+    private TeamDto team;
 
     @OneToOne
     @JoinColumn(name = "player_stats_id", referencedColumnName = "id")

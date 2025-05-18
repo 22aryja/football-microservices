@@ -3,6 +3,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
+import org.example.teamservice.dto.LeagueDto;
 
 import java.util.List;
 import java.util.UUID;
@@ -25,14 +26,11 @@ public class Team {
     @Column(nullable = false)
     private Integer amountOfPlayers;
 
-    @ManyToOne
-    @JoinColumn(name = "league_id", nullable = false)
-    @JsonBackReference
-    private League league;
+    @Column(nullable = false)
+    private UUID leagueId;
 
-    @OneToMany(mappedBy = "team")
-    @JsonManagedReference
-    private List<Player> players;
+    @Transient
+    private LeagueDto league;
 
     @OneToOne
     @JoinColumn(name = "coach_id", referencedColumnName = "id")
@@ -43,5 +41,4 @@ public class Team {
     @JoinColumn(name = "stadium_id", referencedColumnName = "id")
     @JsonManagedReference
     private Stadium stadium;
-
 }

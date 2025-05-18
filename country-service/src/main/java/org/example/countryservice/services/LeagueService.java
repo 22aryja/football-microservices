@@ -1,6 +1,7 @@
 package org.example.countryservice.services;
 
 import jakarta.persistence.EntityNotFoundException;
+import org.example.countryservice.client.TeamClient;
 import org.example.countryservice.models.Country;
 import org.example.countryservice.models.League;
 import org.example.countryservice.repository.CountryRepository;
@@ -18,17 +19,21 @@ public class LeagueService {
     private final LeagueRepository leagueRepository;
     private final CountryRepository countryRepository;
 
-    public LeagueService(LeagueRepository leagueRepository, CountryRepository countryRepository) {
+    private final TeamClient teamClient;
+
+    public LeagueService(LeagueRepository leagueRepository, CountryRepository countryRepository, TeamClient teamClient) {
         this.leagueRepository = leagueRepository;
         this.countryRepository = countryRepository;
+        this.teamClient = teamClient;
     }
 
     public List<League> getLeagues() {
-        return leagueRepository.findAllLeagueWithTeams();
+        return leagueRepository.findAll();
     }
 
     public League getLeagueById(UUID leagueId){
-        return leagueRepository.findLeagueWithTeamsById(leagueId).orElseThrow(
+        return leagueRepository.findById(leagueId)
+                .orElseThrow(
                 () -> new EntityNotFoundException("Country not found with id: " + leagueId)
         );
     }

@@ -1,8 +1,8 @@
 package org.example.seasonservice.services;
 
-import com.example.football.models.Season;
-import com.example.football.repository.SeasonRepository;
+import org.example.seasonservice.models.Season;
 import jakarta.persistence.EntityNotFoundException;
+import org.example.seasonservice.repositories.SeasonRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

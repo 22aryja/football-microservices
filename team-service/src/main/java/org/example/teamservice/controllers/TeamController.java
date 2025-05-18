@@ -1,6 +1,6 @@
 package org.example.teamservice.controllers;
-import com.example.football.models.Team;
-import com.example.football.services.TeamService;
+import org.example.teamservice.models.Team;
+import org.example.teamservice.services.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

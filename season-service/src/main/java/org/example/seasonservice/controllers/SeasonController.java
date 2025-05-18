@@ -1,6 +1,6 @@
 package org.example.seasonservice.controllers;
-import com.example.football.models.Season;
-import com.example.football.services.SeasonService;
+import org.example.seasonservice.models.Season;
+import org.example.seasonservice.services.SeasonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

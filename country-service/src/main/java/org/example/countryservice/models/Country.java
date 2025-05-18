@@ -3,6 +3,8 @@ package org.example.countryservice.models;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
+import org.example.countryservice.dto.CoachDto;
+import org.example.countryservice.dto.SeasonCountryDto;
 
 import java.util.List;
 import java.util.UUID;
@@ -29,11 +31,9 @@ public class Country {
     @JsonManagedReference
     private List<League> leagues;
 
-//    @OneToMany(mappedBy = "countryFrom")
-//    @JsonManagedReference
-//    private List<Coach> coaches;
-//
-//    @OneToMany(mappedBy = "country")
-//    @JsonManagedReference
-//    private List<SeasonCountry> seasonCountries;
+    @Transient
+    private List<CoachDto> coaches;
+
+    @Transient
+    private List<SeasonCountryDto> seasonCountries;
 }

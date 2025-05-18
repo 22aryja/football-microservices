@@ -1,6 +1,6 @@
 package org.example.teamservice.repository;
 
-import com.example.football.models.Team;
+import org.example.teamservice.models.Team;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

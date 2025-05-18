@@ -1,6 +1,5 @@
 package org.example.countryservice.repository;
 
-//import com.example.football.models.League;
 import org.example.countryservice.models.Country;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

@@ -1,10 +1,10 @@
 package org.example.teamservice.services;
 
-import com.example.football.dto.StadiumDto;
-import com.example.football.models.Stadium;
-import com.example.football.models.Team;
-import com.example.football.repository.StadiumRepository;
-import com.example.football.repository.TeamRepository;
+import org.example.teamservice.dto.StadiumDto;
+import org.example.teamservice.models.Stadium;
+import org.example.teamservice.models.Team;
+import org.example.teamservice.repository.StadiumRepository;
+import org.example.teamservice.repository.TeamRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

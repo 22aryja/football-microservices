@@ -1,8 +1,8 @@
 package org.example.teamservice.controllers;
 
-import com.example.football.dto.CoachDto;
-import com.example.football.models.Coach;
-import com.example.football.services.CoachService;
+import org.example.teamservice.dto.CoachDto;
+import org.example.teamservice.models.Coach;
+import org.example.teamservice.services.CoachService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

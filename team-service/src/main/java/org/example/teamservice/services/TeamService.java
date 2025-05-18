@@ -1,9 +1,9 @@
 package org.example.teamservice.services;
 
-import com.example.football.models.League;
-import com.example.football.models.Team;
-import com.example.football.repository.LeagueRepository;
-import com.example.football.repository.TeamRepository;
+import org.example.teamservice.client.LeagueClient;
+import org.example.teamservice.dto.LeagueDto;
+import org.example.teamservice.models.Team;
+import org.example.teamservice.repository.TeamRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,21 +16,25 @@ import java.util.UUID;
 public class TeamService {
 
     private final TeamRepository teamRepository;
-    private final LeagueRepository leagueRepository;
+    private final LeagueClient leagueClient;
 
-    public TeamService(TeamRepository teamRepository, LeagueRepository leagueRepository) {
+    public TeamService(TeamRepository teamRepository, LeagueClient leagueClient) {
         this.teamRepository = teamRepository;
-        this.leagueRepository = leagueRepository;
+        this.leagueClient = leagueClient;
     }
 
     public List<Team> getTeams() {
-        return teamRepository.findAll();
+        List<Team> teams = teamRepository.findAll();
+        teams.forEach(this::enrichTeamWithLeagueData);
+        return teams;
     }
 
     public Team getTeamById(UUID teamId) {
-        return teamRepository.findTeamWithStadiumById(teamId).orElseThrow(() ->
-                new EntityNotFoundException("Country not found with id: " + teamId)
+        Team team = teamRepository.findTeamWithStadiumById(teamId).orElseThrow(() ->
+                new EntityNotFoundException("Team not found with id: " + teamId)
         );
+        enrichTeamWithLeagueData(team);
+        return team;
     }
 
     @Transactional
@@ -40,11 +44,15 @@ public class TeamService {
             throw new IllegalStateException("Such team already exists");
         });
 
+        LeagueDto league = leagueClient.getLeagueById(leagueId);
+        if (league == null) {
+            throw new EntityNotFoundException("League not found with id: " + leagueId);
+        }
+
         Team newTeam = new Team();
         newTeam.setName(name);
         newTeam.setAmountOfPlayers(amountOfPlayers);
-        League league = leagueRepository.findById(leagueId).
-                orElseThrow(() -> new EntityNotFoundException("League not found with id: " + leagueId));
+        newTeam.setLeagueId(leagueId);
         newTeam.setLeague(league);
 
         return teamRepository.save(newTeam);
@@ -70,7 +78,16 @@ public class TeamService {
         if (!teamRepository.existsById(teamId)) {
             throw new EntityNotFoundException("Team with such id does not exist");
         }
-
         teamRepository.deleteById(teamId);
+    }
+
+    private void enrichTeamWithLeagueData(Team team) {
+        try {
+            LeagueDto league = leagueClient.getLeagueById(team.getLeagueId());
+            team.setLeague(league);
+        } catch (Exception e) {
+            // Log error but don't fail the request
+            System.err.println("Error enriching team data: " + e.getMessage());
+        }
     }
 }

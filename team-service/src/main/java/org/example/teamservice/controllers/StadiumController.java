@@ -1,7 +1,7 @@
 package org.example.teamservice.controllers;
-import com.example.football.dto.StadiumDto;
-import com.example.football.models.Stadium;
-import com.example.football.services.StadiumService;
+import org.example.teamservice.dto.StadiumDto;
+import org.example.teamservice.models.Stadium;
+import org.example.teamservice.services.StadiumService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
