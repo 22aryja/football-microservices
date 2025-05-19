@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping(path = "api/v1/stadium")
+@RequestMapping(path = "api/v1/team/stadium")
 public class StadiumController {
 
     private final StadiumService stadiumService;

@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping(path = "api/v1/coach")
+@RequestMapping(path = "api/v1/team/coach")
 public class CoachController {
 
     private final CoachService coachService;

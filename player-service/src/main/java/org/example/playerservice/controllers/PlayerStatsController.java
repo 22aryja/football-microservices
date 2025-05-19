@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping(path = "api/v1/player_stats")
+@RequestMapping(path = "api/v1/player/stats")
 public class PlayerStatsController {
 
     private final PlayerStatsService playerStatsService;

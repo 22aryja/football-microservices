@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "api/v1/history")
+@RequestMapping(path = "api/v1/season/history")
 public class SeasonCountryController {
 
     private final SeasonCountryService seasonCountryService;

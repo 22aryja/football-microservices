@@ -10,9 +10,9 @@ import java.util.UUID;
 @FeignClient(name = "season-service", url = "http://localhost:8083")
 public interface SeasonClient {
     
-    @GetMapping("/api/v1/season-country/by-country/{countryId}")
+    @GetMapping("/api/v1/season/by-country/{countryId}")
     List<SeasonCountryDto> getSeasonCountriesByCountry(@PathVariable UUID countryId);
     
-    @GetMapping("/api/v1/season-country/{seasonCountryId}")
+    @GetMapping("/api/v1/season/{seasonCountryId}")
     SeasonCountryDto getSeasonCountryById(@PathVariable UUID seasonCountryId);
 } 

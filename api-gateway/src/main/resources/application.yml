@@ -8,21 +8,21 @@ spring:
     gateway:
       routes:
         - id: country-service
-          uri: lb://country-service
+          uri: http://localhost:8081
           predicates:
-            - Path=/api/countries/**
+            - Path=/api/v1/country/**
         - id: player-service
-          uri: lb://player-service
+          uri: http://localhost:8082
           predicates:
-            - Path=/api/players/**
-        - id: team-service
-          uri: lb://team-service
-          predicates:
-            - Path=/api/teams/**
+            - Path=/api/v1/player/**
         - id: season-service
-          uri: lb://season-service
+          uri: http://localhost:8083
           predicates:
-            - Path=/api/seasons/**
+            - Path=/api/v1/season/**
+        - id: team-service
+          uri: http://localhost:8084
+          predicates:
+            - Path=/api/v1/team/**
 
 eureka:
   client:

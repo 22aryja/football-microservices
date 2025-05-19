@@ -9,6 +9,6 @@ import java.util.UUID;
 @FeignClient(name = "league-service", url = "http://localhost:8081")
 public interface LeagueClient {
     
-    @GetMapping("/api/v1/league/{leagueId}")
+    @GetMapping("/api/v1/country/league/{leagueId}")
     LeagueDto getLeagueById(@PathVariable UUID leagueId);
 } 
