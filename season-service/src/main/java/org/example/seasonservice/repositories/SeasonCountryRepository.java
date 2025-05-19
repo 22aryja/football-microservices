@@ -1,7 +1,6 @@
 package org.example.seasonservice.repositories;
 
-
-import com.example.football.models.SeasonCountry;
+import org.example.seasonservice.models.SeasonCountry;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

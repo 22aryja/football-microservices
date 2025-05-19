@@ -1,7 +1,7 @@
 package org.example.seasonservice.controllers;
 
-import com.example.football.models.SeasonCountry;
-import com.example.football.services.SeasonCountryService;
+import org.example.seasonservice.models.SeasonCountry;
+import org.example.seasonservice.services.SeasonCountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

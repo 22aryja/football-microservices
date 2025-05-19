@@ -3,7 +3,7 @@ package org.example.seasonservice.services;
 import org.example.seasonservice.client.CountryClient;
 import org.example.seasonservice.dto.CountryDto;
 import org.example.seasonservice.models.SeasonCountry;
-import org.example.seasonservice.repository.SeasonCountryRepository;
+import org.example.seasonservice.repositories.SeasonCountryRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
